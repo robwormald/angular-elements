@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "public",
+		"headers": [
+			{
+        "source": "/",
+        "headers": [{"key": "Link", "value": "</main.js>;rel=preload;as=script"}]
+      }
+		]
+  }
+}

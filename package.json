@@ -1,0 +1,24 @@
+{
+  "name": "angular-elements",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/animations": "next",
+    "@angular/common": "next",
+    "@angular/compiler": "next",
+    "@angular/compiler-cli": "next",
+    "@angular/core": "next",
+    "@angular/platform-browser": "next",
+    "@angular/platform-server": "next",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^2.0.3",
+    "@ngrx/store": "^2.2.2",
+    "gulp": "^3.9.1",
+    "rxjs": "^5.4.1",
+    "typescript": "^2.3.4",
+    "webcomponentsjs": "^1.0.2",
+    "webpack": "^3.0.0",
+    "zone.js": "^0.8.12"
+  }
+}
