@@ -38,12 +38,12 @@ export class TodoApp {
 
 	//these are internal to the component.
 	addTodo(input:HTMLInputElement){
-       this.todoService.addTodo(input.value);
-	   this.cdr.detectChanges();
+    this.todoService.addTodo(input.value);
+	  this.cdr.detectChanges();
 	}
 
 	completeTodo(todo:any){
-		this.todoService.completeTodo(todo);
-		this.cdr.detectChanges();
+	  this.todoService.completeTodo(todo);
+	  this.cdr.detectChanges();
 	}
 }
