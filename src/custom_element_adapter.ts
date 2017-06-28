@@ -48,6 +48,7 @@ class NgElement<T> extends HTMLElement implements core.Injector, core.NgModuleRe
 			Object.defineProperty(element, input.propName, {
 				set(value) {
 					(element.componentRef.instance as any)[input.templateName] = value;
+					element.componentFactoryResolver.changeDetectorRef.detectChanges();
 				},
 				get() {
 					return (element.componentRef.instance as any)[input.templateName];

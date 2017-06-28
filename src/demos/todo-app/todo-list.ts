@@ -1,14 +1,28 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core'
+import {Component, Input, Output, EventEmitter,  ɵg, IterableDiffers} from '@angular/core'
+
+export function _iterableDiffersFactory(){
+  return ɵg;
+}
 
 @Component({
 	selector: 'todo-list',
-	template: 'todo count: {{ todos ? todos.length : 0 }}'
+	template: `
+		<ul>
+			<li *ngFor="let todo of todos">
+			{{todo.text}} - <button (click)="complete(todo)">x</button>
+			</li>
+		</ul>
+	`,
+	providers: [
+		{ provide: IterableDiffers, useFactory: _iterableDiffersFactory}
+	],
+	styles: [`:host { display: block }`]
 })
 export class TodoList {
 	@Input() todos: any[]
-	@Output() action = new EventEmitter()
+	@Output() completeTodo = new EventEmitter();
 
-	ngOnInit(){
-		setInterval(() => this.action.emit(Date.now()), 500);
+	complete(todo:any){
+		this.completeTodo.emit(todo);
 	}
 }

@@ -3,6 +3,7 @@ const webpack = require('webpack')
 module.exports = {
 	entry: {
 		'todo-app': './lib/demos/todo-app/todo-app-element.js',
+		'now-card': './lib/demos/now-cards/now-card-element.js',
 		'angular': ['@angular/core', './lib/custom_element_adapter.js']
 	},
 	output: {
