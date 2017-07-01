@@ -10,9 +10,10 @@ let renderer: SimpleRendererFactory;
 //Custom Element wrapper that acts as injector + host element
 //TODO: maybe this should implement ComponentRef instead/also
 class NgElement<T> extends HTMLElement implements core.Injector, core.NgModuleRef<any> {
-	componentRef: core.ComponentRef<T>;
+	componentFactory: core.ComponentFactory<T>;
+  componentRef: core.ComponentRef<T>;
 	moduleType: any;
-	constructor(private componentFactory: core.ComponentFactory<T>, private parentInjector?: core.Injector) {
+	constructor(private parentInjector?: core.Injector) {
 		super();
 
 		if (!renderer) {
@@ -21,7 +22,7 @@ class NgElement<T> extends HTMLElement implements core.Injector, core.NgModuleRe
 	}
 
 	get(token: any, notFoundValue: any = core.Injector.THROW_IF_NOT_FOUND): any {
-		switch (token) {
+    switch (token) {
 			case core.RendererFactory2:
 				return renderer;
 			case core.Sanitizer:
@@ -83,10 +84,13 @@ class NgElement<T> extends HTMLElement implements core.Injector, core.NgModuleRe
 
 function defineNgElement<T>(componentFactory: core.ComponentFactory<T>) {
   const NgElementCtor = class extends NgElement<T> {
-		constructor() {
-			super(componentFactory);
+		constructor(parentInjector?:core.Injector) {
+			super(parentInjector);
 		}
 	}
+
+  NgElementCtor.prototype.componentFactory = componentFactory;
+
   customElements.define(componentFactory.selector, NgElementCtor);
 }
 

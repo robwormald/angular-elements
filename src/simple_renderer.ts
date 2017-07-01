@@ -71,7 +71,6 @@ class SimpleRenderer implements core.Renderer2 {
 	}
 
 	selectRootElement(selectorOrNode: string | any): any {
-		console.log('select', selectorOrNode)
 		let el: any = typeof selectorOrNode === 'string' ? document.querySelector(selectorOrNode) :
 			selectorOrNode;
 		if (!el) {

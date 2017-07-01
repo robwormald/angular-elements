@@ -6,7 +6,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ChangeDetectorRef, Directive, DoCheck, EmbeddedViewRef, Input, IterableChangeRecord, IterableChanges, IterableDiffer, IterableDiffers, DefaultIterableDiffer,NgIterable, OnChanges, SimpleChanges, TemplateRef, TrackByFunction, ViewContainerRef, forwardRef, isDevMode} from '@angular/core';
+import {ChangeDetectorRef, Directive, DoCheck, EmbeddedViewRef, Input, IterableChangeRecord, IterableChanges, IterableDiffer, IterableDiffers, DefaultIterableDiffer,NgIterable, OnChanges, SimpleChanges, TemplateRef, TrackByFunction, ViewContainerRef, forwardRef, isDevMode, ɵg} from '@angular/core';
+
+
+export function _iterableDiffersFactory(){
+  return ɵg;
+}
+
 
 /**
  * @stable
@@ -96,7 +102,7 @@ export class NgForOfContext<T> {
  *
  * @stable
  */
-@Directive({selector: '[ngFor][ngForOf]'})
+@Directive({selector: '[ngFor][ngForOf]', providers: [{ provide: IterableDiffers, useFactory: _iterableDiffersFactory}]})
 export class NgForOf<T> implements DoCheck, OnChanges {
   @Input() ngForOf: NgIterable<T>;
   @Input()

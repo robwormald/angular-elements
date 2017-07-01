@@ -1,9 +1,12 @@
 import {NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core'
 import {NowCard} from './now-card'
-import {NgSwitch, NgSwitchDefault, NgSwitchCase} from '../../directives/ng_switch'
+import {NowCardFeed} from './now-card-feed'
+import {NgDirectivesModule} from '../../directives/ng_directives'
 
 @NgModule({
-	declarations: [NowCard, NgSwitch, NgSwitchDefault, NgSwitchCase],
+  imports: [NgDirectivesModule],
+	declarations: [NowCard, NowCardFeed],
+  entryComponents: [NowCard],
 	schemas: []
 })
 export class NowCardModule {}

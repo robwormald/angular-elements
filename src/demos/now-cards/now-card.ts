@@ -28,7 +28,9 @@ import {Component, HostBinding, Input} from '@angular/core'
 	</ng-container>
 	`,
 	styles: [
-
+    `:host {
+      background-color: blue;
+    }`
 	]
 })
 export class NowCard {

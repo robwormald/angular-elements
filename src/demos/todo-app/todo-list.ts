@@ -13,9 +13,7 @@ export function _iterableDiffersFactory(){
 			</li>
 		</ul>
 	`,
-	providers: [
-		{ provide: IterableDiffers, useFactory: _iterableDiffersFactory}
-	],
+	providers: [],
 	styles: [`:host { display: block }`]
 })
 export class TodoList {
