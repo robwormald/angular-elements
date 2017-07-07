@@ -7,7 +7,7 @@ export class TodoService {
 		this.todos.next(this.todos.value.concat([{text: 'new todo text', completed: false}]))
 	}
 	completeTodo(completedTodo:any){
-		this.todos.next(this.todos.value.map(todo => todo === completedTodo ? Object.assign({}, todo, {completed: true}) : todo ))
+		this.todos.next(this.todos.value.filter(todo => todo !== completedTodo))
 	}
 }
 
@@ -17,7 +17,7 @@ export class TodoService {
 	  <h1>Todo App</h1>
 	  <input type="text" #todoInput>
 	  <button (click)="addTodo(todoInput)"></button>
-	  <todo-list [todos]="todoService.todos | push"></todo-list>
+	  <todo-list [todos]="todoService.todos | push" (completeTodo)="completeTodo($event)"></todo-list>
 	`,
 	encapsulation: ViewEncapsulation.Native,
 	styles: [
@@ -32,7 +32,9 @@ export class TodoService {
 	providers: [TodoService]
 })
 export class TodoApp {
-	constructor(public todoService:TodoService, private cdr:ChangeDetectorRef){}
+	constructor(public todoService:TodoService, private cdr:ChangeDetectorRef){
+
+  }
 
 	//these are internal to the component.
 	addTodo(input:HTMLInputElement){

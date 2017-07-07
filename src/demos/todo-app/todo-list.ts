@@ -1,15 +1,11 @@
-import {Component, Input, Output, EventEmitter,  ɵg, IterableDiffers} from '@angular/core'
-
-export function _iterableDiffersFactory(){
-  return ɵg;
-}
+import {Component, Input, Output, EventEmitter} from '@angular/core'
 
 @Component({
 	selector: 'todo-list',
 	template: `
 		<ul>
 			<li *ngFor="let todo of todos">
-			{{todo.text}} - <button (click)="complete(todo)">x</button>
+			{{todo.text}} - <button (click)="completeTodo.emit(todo)">x</button>
 			</li>
 		</ul>
 	`,
@@ -19,8 +15,4 @@ export function _iterableDiffersFactory(){
 export class TodoList {
 	@Input() todos: any[]
 	@Output() completeTodo = new EventEmitter();
-
-	complete(todo:any){
-		this.completeTodo.emit(todo);
-	}
 }

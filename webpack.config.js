@@ -2,8 +2,10 @@ const path = require('path');
 const webpack = require('webpack')
 module.exports = {
 	entry: {
-		'todo-app': './lib/demos/todo-app/todo-app-element.js',
-		'now-card': './lib/demos/now-cards/now-card-element.js',
+		'todo-app': './lib/demos/todo-app/todo-app.ngelement.js',
+		'now-card-feed': './lib/demos/now-cards/now-card-feed.ngelement.js',
+    'now-card': './lib/demos/now-cards/now-card.ngelement.js',
+    'progress-bars': './lib/demos/progress-bar/progress-bar.ngelement.js',
 		'angular': ['@angular/core', './lib/custom_element_adapter.js']
 	},
 	output: {

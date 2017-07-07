@@ -10,8 +10,8 @@ export class PushPipe {
   private _currentStream:Observable<any>;
   private _currentValue:any;
   private _activeSubscription:Subscription;
-  constructor(private _cdr:ChangeDetectorRef ){}
-  transform(stream: Observable<any> | null){
+  constructor(private _cdr:ChangeDetectorRef){}
+  transform(stream: Observable<any> | null, transforms?:(s:Observable<any>) => Observable<any>){
     if(!this._currentStream && stream){
       this._createSubscription(stream);
     }
@@ -29,7 +29,7 @@ export class PushPipe {
   private _onValueChange(newValue:any){
     if(newValue !== this._currentValue){
         this._currentValue = newValue;
-        this._cdr.detectChanges();
+        requestAnimationFrame(() => this._cdr.detectChanges());
       }
   }
 }
